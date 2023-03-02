@@ -35,12 +35,12 @@ public class GameWindow extends JPanel  implements Runnable{
     /*
         Matrix Stuff
      */
-    double[][] TwoDProjMat = {
+    public double[][] TwoDProjMat = {
         {1,0,0,0},
         {0,1,0,0},
         {0,0,1,0}
     };
-    double[][] CameraMat = {
+    public double[][] CameraMat = {
             {0},
             {0},
             {0},
