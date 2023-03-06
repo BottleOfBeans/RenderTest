@@ -31,6 +31,7 @@ public class GameWindow extends JPanel  implements Runnable{
 
     //Game Values
     int FPS = 144;
+    double focalLength = 0.012;
 
     /*
         Matrix Stuff
@@ -91,6 +92,5 @@ public class GameWindow extends JPanel  implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D graphics = (Graphics2D)g;
-        graphics.fillOval(gameWidth/2,gameHeight/2,100,100);
     }
 }
