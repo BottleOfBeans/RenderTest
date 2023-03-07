@@ -1,7 +1,11 @@
 package src.App;
 
+import org.w3c.dom.css.Rect;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
 public class GameWindow extends JPanel  implements Runnable{
@@ -37,18 +41,22 @@ public class GameWindow extends JPanel  implements Runnable{
         Matrix Stuff
      */
     public double[][] TwoDProjMat = {
-        {1,0,0,0},
-        {0,1,0,0},
-        {0,0,1,0}
+        {1,0,0},
+        {0,0,1}
     };
-    public double[][] CameraMat = {
+    public double[][] OffsetMat = {
             {0},
-            {0},
-            {0},
-            {1}
+            {0}
     };
 
     Matrix TwoDProjectionMatrix = new Matrix(TwoDProjMat);
+
+    public GameWindow(){
+        this.setPreferredSize(new Dimension(gameWidth, gameHeight));
+        this.setBackground(Color.black);
+        this.setDoubleBuffered(true);
+        this.setFocusable(true);
+    }
 
 
     //Starting thread, managing frame updates
@@ -92,5 +100,18 @@ public class GameWindow extends JPanel  implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D graphics = (Graphics2D)g;
+
+        Particle p1 = new Particle(10,10,0,10);
+        Particle p2 = new Particle(10,0,0,10);
+        Particle p3 = new Particle(0,0,0,10);
+        Particle p4 = new Particle(0,10,0,10);
+
+        Particle p5 = new Particle(10,10,10,10);
+        Particle p6 = new Particle(10,0,10,10);
+        Particle p7 = new Particle(0,0,10,10);
+        Particle p8 = new Particle(0,10,10,10);
+
+        Polygon rect1 = new Polygon(p1.getParticle(), p2.getParticle(), p3.getParticle(), p4.getParticle());
+        Poly
     }
 }

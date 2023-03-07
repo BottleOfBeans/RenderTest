@@ -1,6 +1,7 @@
 package src.App;
 
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 
 public class Particle extends GameWindow{
     double x,y,z, radius;
@@ -13,15 +14,19 @@ public class Particle extends GameWindow{
         radius = gradius;
     }
 
-    public Ellipse2D.Double getParticle(){
+    public Point2D.Double  getParticle(){
         double[][] self = {
-                {x,y,z}
+                {x},
+                {y},
+                {z}
         };
         Matrix selfMat = new Matrix(self);
 
-        double projX = selfMat.multiplyMatricies(TwoDProjectionMatrix).matrix[0][0];
-        double projY = selfMat.multiplyMatricies(TwoDProjectionMatrix).matrix[0][1];
+        Matrix finalMat = TwoDProjectionMatrix.multiplyMatricies(selfMat);
+
+        double projX = finalMat.matrix[0][0];
+        double projY = finalMat.matrix[1][0];
         double projSize = radius*focalLength/z;
-        return new Ellipse2D.Double(projX - projSize, projY - projSize, projSize*2, projSize*2);
+        return new Point2D.Double(projX - projSize, -projSize);
     }
 }
